@@ -1,6 +1,7 @@
 plugins {
     java
     id("io.quarkus")
+    kotlin("jvm") version "1.9.10"
 }
 
 repositories {
@@ -21,14 +22,13 @@ dependencies {
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-hibernate-orm")
     testImplementation("io.quarkus:quarkus-junit5")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
 }
 
 group = "com.edsonmoreirajr"
 version = "1.0.0-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.withType<Test> {
@@ -37,4 +37,7 @@ tasks.withType<Test> {
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     options.compilerArgs.add("-parameters")
+}
+kotlin {
+    jvmToolchain(17)
 }

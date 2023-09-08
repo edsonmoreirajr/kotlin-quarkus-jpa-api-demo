@@ -8,6 +8,7 @@ pluginManagement {
     }
     plugins {
         id(quarkusPluginId) version quarkusPluginVersion
+        id("org.gradle.toolchains.foojay-resolver-convention") version " 0.7.0"
     }
 }
 rootProject.name = "kotlin-quarkus-jpa-api-demo"
