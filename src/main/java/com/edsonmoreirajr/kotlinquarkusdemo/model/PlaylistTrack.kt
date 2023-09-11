@@ -1,23 +1,29 @@
 package com.edsonmoreirajr.kotlinquarkusdemo.model
 
-import jakarta.persistence.*
+import jakarta.persistence.EmbeddedId
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
+import jakarta.persistence.MapsId
+import jakarta.persistence.Table
 
 @Entity
-@Table(name = "PlaylistTrack")
-class PlaylistTrack(
+@Table(name = "\"PlaylistTrack\"")
+open class PlaylistTrack {
     @EmbeddedId
-    val id: PlaylistTrackId? = null,
+    open var id: PlaylistTrackId? = null
 
     @MapsId("playlistId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PlaylistId", nullable = false)
-    val playlist: Playlist? = null,
+    @JoinColumn(name = "\"PlaylistId\"", nullable = false)
+    open var playlist: Playlist? = null
 
     @MapsId("trackId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "TrackId", nullable = false)
-    val track: Track? = null
-) {
+    @JoinColumn(name = "\"TrackId\"", nullable = false)
+    open var track: Track? = null
+
     override fun toString(): String {
         return "PlaylistTrack(id=$id, playlist=${playlist?.name}, track=${track?.name})"
     }

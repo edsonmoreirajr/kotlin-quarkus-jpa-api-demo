@@ -3,30 +3,31 @@ package com.edsonmoreirajr.kotlinquarkusdemo.model
 import jakarta.persistence.Column
 import jakarta.persistence.Embeddable
 import jakarta.validation.constraints.NotNull
+import org.hibernate.Hibernate
 import java.io.Serializable
+import java.util.*
 
 @Embeddable
-class PlaylistTrackId(
+open class PlaylistTrackId : Serializable {
     @NotNull
     @Column(name = "PlaylistId", nullable = false)
-    val playlistId: Int? = null,
+    open var playlistId: Int? = null
 
     @NotNull
     @Column(name = "TrackId", nullable = false)
-    val trackId: Int? = null
-) : Serializable {
+    open var trackId: Int? = null
+    override fun hashCode(): Int = Objects.hash(playlistId, trackId)
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || this.javaClass != other.javaClass) return false
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+
         other as PlaylistTrackId
-        if (playlistId != other.playlistId) return false
-        if (trackId != other.trackId) return false
-        return true
+
+        return playlistId == other.playlistId &&
+                trackId == other.trackId
     }
 
-    override fun hashCode(): Int {
-        var result = playlistId ?: 0
-        result = 31 * result + (trackId ?: 0)
-        return result
+    companion object {
+        private const val serialVersionUID = -4049563190718303187L
     }
 }

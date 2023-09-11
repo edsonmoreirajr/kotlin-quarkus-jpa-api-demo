@@ -15,6 +15,7 @@ val quarkusPlatformVersion: String by project
 
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
+    implementation("io.quarkus:quarkus-resteasy-reactive-jsonb")
     implementation("io.quarkus:quarkus-hibernate-orm-panache-kotlin")
     implementation("io.quarkus:quarkus-hibernate-validator")
     implementation("io.quarkus:quarkus-smallrye-graphql")
@@ -22,6 +23,7 @@ dependencies {
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-hibernate-orm")
     testImplementation("io.quarkus:quarkus-junit5")
+    implementation("io.quarkus:quarkus-config-yaml")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
 }
 

@@ -7,16 +7,16 @@ import jakarta.persistence.Table
 import jakarta.validation.constraints.Size
 
 @Entity
-@Table(name = "MediaType")
-class MediaType(
+@Table(name = "\"MediaType\"")
+open class MediaType {
     @Id
-    @Column(name = "MediaTypeId", nullable = false)
-    val id: Int? = null,
+    @Column(name = "\"MediaTypeId\"", nullable = false)
+    open var id: Int? = null
 
     @Size(max = 120)
-    @Column(name = "Name", length = 120)
-    val name: String? = null
-) {
+    @Column(name = "\"Name\"", length = 120)
+    open var name: String? = null
+
     override fun toString(): String {
         return "MediaType(id=$id, name=$name)"
     }

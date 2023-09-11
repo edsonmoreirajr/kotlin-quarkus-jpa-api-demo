@@ -7,16 +7,16 @@ import jakarta.persistence.Table
 import jakarta.validation.constraints.Size
 
 @Entity
-@Table(name = "Artist")
-class Artist(
+@Table(name = "\"Artist\"")
+open class Artist {
     @Id
-    @Column(name = "ArtistId", nullable = false)
-    var id: Int? = null,
+    @Column(name = "\"ArtistId\"", nullable = false)
+    open var id: Int? = null
 
     @Size(max = 120)
-    @Column(name = "Name", length = 120)
-    var name: String? = null
-) {
+    @Column(name = "\"Name\"", length = 120)
+    open var name: String? = null
+
     override fun toString(): String {
         return "Artist(id=$id, name=$name)"
     }

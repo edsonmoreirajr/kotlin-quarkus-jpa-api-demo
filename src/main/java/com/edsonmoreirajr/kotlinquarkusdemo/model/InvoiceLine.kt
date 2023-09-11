@@ -1,34 +1,40 @@
 package com.edsonmoreirajr.kotlinquarkusdemo.model
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
+import jakarta.persistence.Table
 import jakarta.validation.constraints.NotNull
 import java.math.BigDecimal
 
 @Entity
-@Table(name = "InvoiceLine")
-class InvoiceLine(
+@Table(name = "\"InvoiceLine\"")
+open class InvoiceLine {
     @Id
-    @Column(name = "InvoiceLineId", nullable = false)
-    val id: Int? = null,
+    @Column(name = "\"InvoiceLineId\"", nullable = false)
+    open var id: Int? = null
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "InvoiceId", nullable = false)
-    val invoice: Invoice? = null,
+    @JoinColumn(name = "\"InvoiceId\"", nullable = false)
+    open var invoice: Invoice? = null
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "TrackId", nullable = false)
-    val track: Track? = null,
+    @JoinColumn(name = "\"TrackId\"", nullable = false)
+    open var track: Track? = null
 
     @NotNull
-    @Column(name = "UnitPrice", nullable = false, precision = 10, scale = 2)
-    val unitPrice: BigDecimal? = null,
+    @Column(name = "\"UnitPrice\"", nullable = false, precision = 10, scale = 2)
+    open var unitPrice: BigDecimal? = null
 
     @NotNull
-    @Column(name = "Quantity", nullable = false)
-    val quantity: Int? = null
-) {
+    @Column(name = "\"Quantity\"", nullable = false)
+    open var quantity: Int? = null
+
     override fun toString(): String {
         return "InvoiceLine(id=$id, invoice=${invoice?.id}, track=${track?.name}, unitPrice=$unitPrice, quantity=$quantity)"
     }

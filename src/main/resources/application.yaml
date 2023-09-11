@@ -1,0 +1,10 @@
+quarkus:
+  devservices:
+    enabled: false
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: postgres
+    jdbc:
+      url: jdbc:postgresql://localhost:55432/chinook
+      max-size: 16

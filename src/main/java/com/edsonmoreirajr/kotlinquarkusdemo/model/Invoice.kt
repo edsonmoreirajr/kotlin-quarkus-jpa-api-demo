@@ -1,51 +1,57 @@
 package com.edsonmoreirajr.kotlinquarkusdemo.model
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
+import jakarta.persistence.Table
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
 import java.math.BigDecimal
 import java.time.Instant
 
 @Entity
-@Table(name = "Invoice")
-class Invoice(
+@Table(name = "\"Invoice\"")
+open class Invoice {
     @Id
-    @Column(name = "InvoiceId", nullable = false)
-    val id: Int? = null,
+    @Column(name = "\"InvoiceId\"", nullable = false)
+    open var id: Int? = null
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "CustomerId", nullable = false)
-    val customer: Customer? = null,
+    @JoinColumn(name = "\"CustomerId\"", nullable = false)
+    open var customer: Customer? = null
 
     @NotNull
-    @Column(name = "InvoiceDate", nullable = false)
-    val invoiceDate: Instant? = null,
+    @Column(name = "\"InvoiceDate\"", nullable = false)
+    open var invoiceDate: Instant? = null
 
     @Size(max = 70)
-    @Column(name = "BillingAddress", length = 70)
-    val billingAddress: String? = null,
+    @Column(name = "\"BillingAddress\"", length = 70)
+    open var billingAddress: String? = null
 
     @Size(max = 40)
-    @Column(name = "BillingCity", length = 40)
-    val billingCity: String? = null,
+    @Column(name = "\"BillingCity\"", length = 40)
+    open var billingCity: String? = null
 
     @Size(max = 40)
-    @Column(name = "BillingState", length = 40)
-    val billingState: String? = null,
+    @Column(name = "\"BillingState\"", length = 40)
+    open var billingState: String? = null
 
     @Size(max = 40)
-    @Column(name = "BillingCountry", length = 40)
-    val billingCountry: String? = null,
+    @Column(name = "\"BillingCountry\"", length = 40)
+    open var billingCountry: String? = null
 
     @Size(max = 10)
-    @Column(name = "BillingPostalCode", length = 10)
-    val billingPostalCode: String? = null,
+    @Column(name = "\"BillingPostalCode\"", length = 10)
+    open var billingPostalCode: String? = null
 
     @NotNull
-    @Column(name = "Total", nullable = false, precision = 10, scale = 2)
-    val total: BigDecimal? = null
-) {
+    @Column(name = "\"Total\"", nullable = false, precision = 10, scale = 2)
+    open var total: BigDecimal? = null
+
     override fun toString(): String {
         return "Invoice(id=$id, customer=${customer?.firstName} ${customer?.lastName}, invoiceDate=$invoiceDate, total=$total)"
     }
